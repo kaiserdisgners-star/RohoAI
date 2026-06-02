@@ -1,114 +1,125 @@
 <!DOCTYPE html>
-
 <html lang="sw">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>RohoAI</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RohoAI - Your Intelligent AI Assistant for Swahili">
+  <meta name="theme-color" content="#333">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>RohoAI | AI Assistant</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🤖</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="RohoAI">
+  <meta property="og:description" content="Your Intelligent AI Assistant for Swahili">
+  <meta property="og:type" content="website">
 </head>
-
 <body>
+  <div class="app" id="app">
+    <!-- HEADER/NAVIGATION -->
+    <header role="banner">
+      <div class="header-content">
+        <div class="logo" aria-label="RohoAI Logo">
+          <span aria-hidden="true">🤖</span>
+          <span>RohoAI</span>
+        </div>
+        <div class="status" id="status" aria-live="polite" aria-label="Connection Status">
+          <span class="status-indicator" aria-hidden="true">●</span>
+          <span>Online</span>
+        </div>
+      </div>
+    </header>
 
-<div class="app">
+    <!-- MAIN CONTENT -->
+    <main class="chat-container">
+      <!-- USER PROFILE SECTION -->
+      <section class="profile" role="complementary" aria-label="User Profile">
+        <div class="avatar" aria-label="User Avatar">👤</div>
+        <div class="profileInfo">
+          <h2 id="username">Guest</h2>
+          <p>RohoAI User</p>
+        </div>
+        <button id="editProfileBtn" class="btn-edit" aria-label="Edit Profile Settings">
+          <span aria-hidden="true">✎</span>
+          <span>Edit</span>
+        </button>
+      </section>
 
-<header>
+      <!-- CHAT DISPLAY AREA -->
+      <section id="chat" class="chat-area" role="log" aria-live="polite" aria-label="Chat Messages">
+        <div class="ai message" role="article">
+          <div class="message-avatar" aria-hidden="true">🤖</div>
+          <div class="message-content">
+            <p>Karibu 👋 Mimi ni RohoAI</p>
+          </div>
+        </div>
+      </section>
 
-<div class="logo">
+      <!-- INPUT SECTION -->
+      <section class="inputBox" role="search" aria-label="Message Input Area">
+        <form id="chatForm" onsubmit="handleFormSubmit(event)">
+          <div class="input-wrapper">
+            <label for="prompt" class="sr-only">Ujumbe wako</label>
+            <input
+              id="prompt"
+              type="text"
+              class="chat-input"
+              placeholder="Andika ujumbe..."
+              autocomplete="off"
+              spellcheck="true"
+              aria-label="Message Input"
+              required
+            >
+            <button
+              id="sendBtn"
+              type="submit"
+              class="btn-send"
+              aria-label="Send Message"
+              title="Send (Enter)"
+            >
+              <span aria-hidden="true">➤</span>
+              <span class="sr-only">Send</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
 
-🤖 RohoAI
+    <!-- SKIP TO MAIN LINK (accessibility) -->
+    <a href="#chat" class="sr-only-focusable">Skip to chat messages</a>
+  </div>
 
-</div>
+  <!-- SCRIPTS -->
+  <script src="script.js" defer></script>
 
-<div class="status">
+  <!-- Inline utility styles for screen readers -->
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
 
-Online
-
-</div>
-
-</header>
-
-
-<!-- USER PROFILE -->
-
-<div class="profile">
-
-<div class="avatar">
-
-👤
-
-</div>
-
-<div class="profileInfo">
-
-<h3 id="username">
-
-Guest
-
-</h3>
-
-<p>
-
-RohoAI User
-
-</p>
-
-</div>
-
-<button onclick="editProfile()">
-
-Edit
-
-</button>
-
-</div>
-
-
-<!-- CHAT -->
-
-<div id="chat">
-
-<div class="ai message">
-
-Karibu 👋 Mimi ni RohoAI
-
-</div>
-
-</div>
-
-
-<!-- INPUT -->
-
-<div class="inputBox">
-
-<input
-
-id="prompt"
-
-placeholder="Andika ujumbe..."
-
-autocomplete="off"
-
->
-
-<button onclick="sendMessage()">
-
-➤
-
-</button>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
+    .sr-only-focusable:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+    }
+  </style>
 </body>
-
 </html>
