@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RohoAI</title>
 </head>
+<script>
+function jibu() {
+    let swali = document.querySelector("input").value.toLowerCase();
+    let jibu = "";
+
+    if(swali.includes("habari")) {
+        jibu = "Habari! Mimi ni RohoAI.";
+    } else if(swali.includes("jina")) {
+        jibu = "Jina langu ni RohoAI.";
+    } else {
+        jibu = "Samahani, bado najifunza Kiswahili.";
+    }
+
+    document.getElementById("majibu").innerText = jibu;
+}
+</script>
 <body>
 
     <h1>🤖 RohoAI</h1>
