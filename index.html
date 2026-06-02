@@ -1,36 +1,75 @@
 <!DOCTYPE html>
+
 <html lang="sw">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RohoAI</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>RohoAI</title>
+
+<link rel="stylesheet"
+href="style.css">
+
 </head>
+
 <body>
 
-    <h1>🤖 RohoAI</h1>
-    <p>Karibu kwenye RohoAI - AI ya Kiswahili.</p>
+<div class="app">
 
-    <input type="text" id="swali" placeholder="Andika swali lako hapa">
-    <button onclick="jibu()">Tuma</button>
+<header>
 
-    <p id="majibu"></p>
+<div class="logo">
 
-<script>
-function jibu() {
-    let swali = document.getElementById("swali").value.toLowerCase();
-    let jibu = "";
+🤖 RohoAI
 
-    if (swali.includes("habari")) {
-        jibu = "Habari! Mimi ni RohoAI.";
-    } else if (swali.includes("jina")) {
-        jibu = "Jina langu ni RohoAI.";
-    } else {
-        jibu = "Samahani, bado najifunza Kiswahili.";
-    }
+</div>
 
-    document.getElementById("majibu").innerText = jibu;
-}
-</script>
+<div class="status">
+
+Online
+
+</div>
+
+</header>
+
+
+<div id="chat">
+
+<div class="ai message">
+
+Karibu 👋 Mimi ni RohoAI
+
+</div>
+
+</div>
+
+
+<div class="inputBox">
+
+<input
+
+id="prompt"
+
+placeholder="Andika ujumbe..."
+
+>
+
+<button onclick="sendMessage()">
+
+➤
+
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
+
 </html>
