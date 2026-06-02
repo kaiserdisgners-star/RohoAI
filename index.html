@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RohoAI</title>
 </head>
-
 <body>
 
     <h1>🤖 RohoAI</h1>
     <p>Karibu kwenye RohoAI - AI ya Kiswahili.</p>
 
-    <input type="text" placeholder="Andika swali lako hapa">
+    <input type="text" id="swali" placeholder="Andika swali lako hapa">
     <button onclick="jibu()">Tuma</button>
-<p id="majibu"></p>
+
+    <p id="majibu"></p>
+
 <script>
 function jibu() {
-    let swali = document.querySelector("input").value.toLowerCase();
+    let swali = document.getElementById("swali").value.toLowerCase();
     let jibu = "";
 
-    if(swali.includes("habari")) {
+    if (swali.includes("habari")) {
         jibu = "Habari! Mimi ni RohoAI.";
-    } else if(swali.includes("jina")) {
+    } else if (swali.includes("jina")) {
         jibu = "Jina langu ni RohoAI.";
     } else {
         jibu = "Samahani, bado najifunza Kiswahili.";
@@ -32,5 +33,4 @@ function jibu() {
 </script>
 
 </body>
-
 </html>
