@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RohoAI</title>
 </head>
+
+<body>
+
+    <h1>🤖 RohoAI</h1>
+    <p>Karibu kwenye RohoAI - AI ya Kiswahili.</p>
+
+    <input type="text" placeholder="Andika swali lako hapa">
+    <button onclick="jibu()">Tuma</button>
+<p id="majibu"></p>
 <script>
 function jibu() {
     let swali = document.querySelector("input").value.toLowerCase();
@@ -21,14 +30,7 @@ function jibu() {
     document.getElementById("majibu").innerText = jibu;
 }
 </script>
-<body>
-
-    <h1>🤖 RohoAI</h1>
-    <p>Karibu kwenye RohoAI - AI ya Kiswahili.</p>
-
-    <input type="text" placeholder="Andika swali lako hapa">
-    <button onclick="jibu()">Tuma</button>
-<p id="majibu"></p>
 
 </body>
+
 </html>
