@@ -4,13 +4,86 @@ const chat =
 document.getElementById("chat");
 
 
-/* Load previous messages */
+
+/* PROFILE */
+
+let profile = JSON.parse(
+
+localStorage.getItem(
+
+"roho_profile"
+
+)
+
+)||{
+
+name:"Guest"
+
+};
+
+
+
+function loadProfile(){
+
+document
+
+.getElementById("username")
+
+.innerText=
+
+profile.name;
+
+}
+
+
+
+function editProfile(){
+
+const name=
+
+prompt(
+
+"Your name",
+
+profile.name
+
+);
+
+if(name){
+
+profile.name=name;
+
+localStorage.setItem(
+
+"roho_profile",
+
+JSON.stringify(profile)
+
+);
+
+loadProfile();
+
+}
+
+}
+
+
+
+loadProfile();
+
+
+
+/* MEMORY */
 
 let memory = JSON.parse(
 
-localStorage.getItem("roho_memory")
+localStorage.getItem(
 
-) || [];
+"roho_memory"
+
+)
+
+)||[];
 
 
 
@@ -28,17 +101,31 @@ JSON.stringify(memory)
 
 
 
-function addMessage(text,type){
+/* MESSAGE UI */
 
-const div = document.createElement("div");
+function addMessage(
 
-div.className = `message ${type}`;
+text,
 
-div.innerText = text;
+type
+
+){
+
+const div=
+
+document.createElement("div");
+
+div.className=
+
+`message ${type}`;
+
+div.innerText=text;
 
 chat.appendChild(div);
 
-chat.scrollTop = chat.scrollHeight;
+chat.scrollTop=
+
+chat.scrollHeight;
 
 return div;
 
@@ -46,7 +133,7 @@ return div;
 
 
 
-/* show old chat after refresh */
+/* LOAD OLD CHATS */
 
 memory.forEach(msg=>{
 
@@ -62,13 +149,19 @@ msg.type
 
 
 
+/* SEND MESSAGE */
+
 async function sendMessage(){
 
-const input =
+const input=
 
-document.getElementById("prompt");
+document.getElementById(
 
-const text =
+"prompt"
+
+);
+
+const text=
 
 input.value.trim();
 
@@ -76,7 +169,15 @@ if(!text)return;
 
 
 
-addMessage(text,"user");
+addMessage(
+
+text,
+
+"user"
+
+);
+
+
 
 memory.push({
 
@@ -85,6 +186,8 @@ type:"user",
 text:text
 
 });
+
+
 
 saveMemory();
 
@@ -109,6 +212,23 @@ addMessage(
 try{
 
 
+
+const conversation =
+
+memory
+
+.slice(-20)
+
+.map(
+
+m=>`${m.type}: ${m.text}`
+
+)
+
+.join("\n");
+
+
+
 const response=
 
 await fetch(
@@ -127,7 +247,9 @@ headers:{
 
 },
 
-body:JSON.stringify({
+body:
+
+JSON.stringify({
 
 contents:[{
 
@@ -135,17 +257,25 @@ parts:[{
 
 text:
 
-memory
+`
 
-.slice(-20)
+You are RohoAI.
 
-.map(
+User name:
 
-m=>`${m.type}: ${m.text}`
+${profile.name}
 
-)
+Conversation:
 
-.join("\n")
+${conversation}
+
+Current message:
+
+${text}
+
+Reply naturally.
+
+`
 
 }]
 
@@ -164,7 +294,9 @@ const data=
 await response.json();
 
 
+
 loading.remove();
+
 
 
 const reply=
@@ -175,11 +307,17 @@ data.candidates?.[0]
 
 ?.text ||
 
-"No response";
+"Samahani, sijapata jibu.";
 
 
 
-addMessage(reply,"ai");
+addMessage(
+
+reply,
+
+"ai"
+
+);
 
 
 
@@ -197,19 +335,65 @@ saveMemory();
 
 }
 
-catch{
+
+
+catch(error){
+
+
 
 loading.innerText=
 
 "Connection Error";
 
-}
+
+
+console.log(
+
+error
+
+);
 
 }
 
 
 
-/* optional clear memory */
+}
+
+
+
+/* ENTER KEY */
+
+document
+
+.getElementById(
+
+"prompt"
+
+)
+
+.addEventListener(
+
+"keypress",
+
+function(e){
+
+if(
+
+e.key==="Enter"
+
+){
+
+sendMessage();
+
+}
+
+}
+
+);
+
+
+
+/* CLEAR MEMORY */
 
 function clearMemory(){
 
