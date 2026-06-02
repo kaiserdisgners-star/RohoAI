@@ -9,7 +9,7 @@
 // ==========================================
 
 const CONFIG = {
-  API_KEY: "WEKA_GEMINI_KEY_HAPA",
+  API_KEY: "AQ.Ab8RN6KTwIoTmeb89QtqLEEh7r4uohd0EcCpF9a5COromq_XxQ",
   API_ENDPOINT: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
   STORAGE_KEYS: {
     PROFILE: "roho_profile",
