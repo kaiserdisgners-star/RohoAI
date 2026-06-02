@@ -6,13 +6,11 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>RohoAI</title>
 
-<link rel="stylesheet"
-href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -37,6 +35,43 @@ Online
 </header>
 
 
+<!-- USER PROFILE -->
+
+<div class="profile">
+
+<div class="avatar">
+
+👤
+
+</div>
+
+<div class="profileInfo">
+
+<h3 id="username">
+
+Guest
+
+</h3>
+
+<p>
+
+RohoAI User
+
+</p>
+
+</div>
+
+<button onclick="editProfile()">
+
+Edit
+
+</button>
+
+</div>
+
+
+<!-- CHAT -->
+
 <div id="chat">
 
 <div class="ai message">
@@ -48,6 +83,8 @@ Karibu 👋 Mimi ni RohoAI
 </div>
 
 
+<!-- INPUT -->
+
 <div class="inputBox">
 
 <input
@@ -55,6 +92,8 @@ Karibu 👋 Mimi ni RohoAI
 id="prompt"
 
 placeholder="Andika ujumbe..."
+
+autocomplete="off"
 
 >
 
